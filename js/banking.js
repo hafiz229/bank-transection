@@ -22,3 +22,37 @@ document
     // clear the deposit input field
     depositInput.value = "";
   });
+
+// handle withdraw event handler
+document
+  .getElementById("withdraw-button")
+  .addEventListener("click", function () {
+    // get the withdraw input field
+    const withdrawInput = document.getElementById("withdraw-input");
+    // collect the withdraw amount (string format)
+    const withdrawAmountText = withdrawInput.value;
+    // convert the string format into float
+    const newWithdrawAmount = parseFloat(withdrawAmountText);
+    // set withdraw total
+    // get the existing withdraw total
+    const withdrawTotal = document.getElementById("withdraw-total");
+    // collect the existing withdraw total (string format)
+    const previousWithdrawText = withdrawTotal.innerText;
+    // conver the string format into float
+    const previousWithdrawTotal = parseFloat(previousWithdrawText);
+
+    // add previousWithdrawTotal & newWithdrawAmount
+    const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+    // update the withdrawTotal
+    withdrawTotal.innerText = newWithdrawTotal;
+
+    // update balance
+    const balanceTotal = document.getElementById("balance-total");
+    const previousBalanceText = balanceTotal.innerText;
+    const previousBalanceTotal = parseFloat(previousBalanceText);
+    const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
+    balanceTotal.innerText = newBalanceTotal;
+
+    // clear withdraw input
+    withdrawInput.value = "";
+  });
